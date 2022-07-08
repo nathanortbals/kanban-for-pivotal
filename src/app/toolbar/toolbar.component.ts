@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable } from 'rxjs';
-import { PivotalProjectStore } from '../pivotal-project-store.service';
+import { PivotalProjectService } from '../pivotal-project-store.service';
 import { RefreshService } from '../refresh.service';
 import { SettingsDialogComponent } from '../settings-dialog/settings-dialog.component';
 
@@ -14,7 +14,7 @@ export class ToolbarComponent implements OnInit {
   public readonly toolbarTitle$: Observable<string>;
 
   constructor(
-    private pivotalProjectStore: PivotalProjectStore,
+    private pivotalProjectStore: PivotalProjectService,
     private dialog: MatDialog,
     private refreshService: RefreshService
   ) {

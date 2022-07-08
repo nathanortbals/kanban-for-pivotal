@@ -9,7 +9,7 @@ import { filterNullOrUndefined } from './utils/filter-null-or-undefined-operator
 @Injectable({
   providedIn: 'root',
 })
-export class PivotalProjectStore {
+export class PivotalProjectService {
   public readonly pivotalProject$: Observable<PivotalProject>;
 
   constructor(
