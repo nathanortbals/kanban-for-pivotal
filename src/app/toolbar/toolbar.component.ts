@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable } from 'rxjs';
-import { PivotalProjectService } from '../pivotal-project-store.service';
+import { PivotalProjectService } from '../pivotal-project.service';
 import { RefreshService } from '../refresh.service';
 import { SettingsDialogComponent } from '../settings-dialog/settings-dialog.component';
 
