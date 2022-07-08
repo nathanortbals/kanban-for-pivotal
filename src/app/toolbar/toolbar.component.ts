@@ -13,6 +13,6 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {}
 
   openSettings() {
-    this.dialog.open(SettingsDialogComponent);
+    this.dialog.open(SettingsDialogComponent, { disableClose: true });
   }
 }

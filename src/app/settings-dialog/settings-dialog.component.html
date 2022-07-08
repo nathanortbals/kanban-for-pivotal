@@ -1,4 +1,7 @@
-<h1 mat-dialog-title>Settings</h1>
+<h1 mat-dialog-title class="settings-dialog-title">
+  <mat-icon>settings</mat-icon>
+  Settings
+</h1>
 <form mat-dialog-content [formGroup]="settingsFormGroup" class="settings-form">
   <mat-form-field class="settings-form-field">
     <mat-label>Pivotal API Token</mat-label>
@@ -9,21 +12,28 @@
     <mat-label>Pivotal Project Id</mat-label>
     <input matInput formControlName="pivotalProjectId" />
     <mat-hint
-      >The id of your pivotal project. Ex:
-      https://www.pivotaltracker.com/n/projects/<b>12345</b></mat-hint
+      >Ex: https://www.pivotaltracker.com/n/projects/<b>12345</b></mat-hint
     >
   </mat-form-field>
 </form>
 <div mat-dialog-actions align="end">
-  <button mat-button (click)="test()" [disabled]="settingsFormGroup.invalid">
+  <span class="settings-dialog-error" *ngIf="settingsState === 'TEST_FAILED'">
+    Error connecting to Pivotal Api
+  </span>
+  <button
+    mat-button
+    (click)="test()"
+    [disabled]="settingsState !== 'READY_TO_TEST'"
+  >
     Test
   </button>
   <button
     mat-button
     color="primary"
     (click)="save()"
-    [disabled]="settingsFormGroup.invalid"
+    [disabled]="settingsState !== 'TEST_SUCCEEDED'"
   >
     Save
   </button>
+  <button mat-button color="warn" (click)="cancel()">Cancel</button>
 </div>

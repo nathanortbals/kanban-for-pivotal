@@ -1,3 +1,12 @@
+.settings-dialog-title {
+  display: flex;
+  align-items: center;
+}
+
+.settings-dialog-title > mat-icon {
+  margin-right: 8px;
+}
+
 .settings-form {
   display: flex;
   flex-direction: column;

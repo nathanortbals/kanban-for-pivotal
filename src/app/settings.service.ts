@@ -24,7 +24,7 @@ export class SettingsService {
     this.settingsSubject = new BehaviorSubject(settings);
   }
 
-  updateSettings(settings: Settings | null) {
+  public updateSettings(settings: Settings | null): void {
     if (settings) {
       localStorage.setItem('pivotalApiToken', settings.pivotalApiToken);
       localStorage.setItem('pivotalProjectId', settings.pivotalProjectId);
