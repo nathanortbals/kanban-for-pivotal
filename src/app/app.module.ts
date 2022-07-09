@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent, SettingsDialogComponent],
@@ -29,6 +30,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MatIconModule,
     HttpClientModule,
     MatSnackBarModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],
