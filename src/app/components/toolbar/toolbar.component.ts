@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RefreshService } from '../refresh.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectPivotalProjectName } from '../../state/pivotal-project/pivotal-project.selectors';
 import { SettingsDialogComponent } from '../settings-dialog/settings-dialog.component';
 
 @Component({
@@ -9,22 +11,15 @@ import { SettingsDialogComponent } from '../settings-dialog/settings-dialog.comp
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  //public readonly toolbarTitle$: Observable<string>;
+  public readonly toolbarTitle$: Observable<string | undefined>;
 
-  constructor(
-    private dialog: MatDialog,
-    private refreshService: RefreshService
-  ) {
-    // this.toolbarTitle$ = this.pivotalProjectStore.pivotalProject$.pipe(
-    //   map((pivotalProject) => pivotalProject.name)
-    // );
+  constructor(public store: Store, private dialog: MatDialog) {
+    this.toolbarTitle$ = store.select(selectPivotalProjectName);
   }
 
   ngOnInit(): void {}
 
-  refresh() {
-    this.refreshService.refresh();
-  }
+  refresh() {}
 
   openSettings() {
     this.dialog.open(SettingsDialogComponent, { disableClose: true });

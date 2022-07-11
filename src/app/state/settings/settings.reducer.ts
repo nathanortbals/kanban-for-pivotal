@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
+import { Settings } from '../../models/settings.state.model';
 import { saveSettings, settingsLoaded } from './settings.actions';
-import { SettingsState } from './settings.state';
 
-export const initialState: SettingsState = {
+export const initialState: Settings = {
   pivotalApiToken: '',
   pivotalProjectId: '',
 };

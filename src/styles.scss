@@ -3,7 +3,8 @@
 @use "@angular/material" as mat;
 
 // Plus imports for other components in your app.
-@use "./app/settings-dialog/settings-dialog.theme.scss" as settings-dialog;
+@use "./app/components/settings-dialog/settings-dialog.theme.scss" as
+  settings-dialog;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { PivotalProject } from '../pivotal-project';
+import { PivotalProject } from '../models/pivotal-project.model';
 
 @Injectable({
   providedIn: 'root',

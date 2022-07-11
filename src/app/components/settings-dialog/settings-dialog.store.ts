@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Store } from '@ngrx/store';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
-import { SettingsService } from '../services/settings.service';
-import { saveSettings } from '../state/settings/settings.actions';
-import { selectSettings } from '../state/settings/settings.selectors';
-import { SettingsState } from '../state/settings/settings.state';
+import { Settings } from '../../models/settings.state.model';
+import { SettingsService } from '../../services/settings.service';
+import { saveSettings } from '../../state/settings/settings.actions';
+import { selectSettings } from '../../state/settings/settings.selectors';
 
 export interface SettingsDialogState {
   pivotalApiToken: string | undefined;
@@ -81,7 +81,7 @@ export class SettingsDialogStore extends ComponentStore<SettingsDialogState> {
     testStatus: 'TESTING',
   }));
 
-  private get settingsAsState(): SettingsState {
+  private get settingsAsState(): Settings {
     const pivotalApiToken = this.get((settings) => settings.pivotalApiToken);
     const pivotalProjectId = this.get((settings) => settings.pivotalProjectId);
 
@@ -106,7 +106,7 @@ export class SettingsDialogStore extends ComponentStore<SettingsDialogState> {
   private readonly testSettingsEffect = this.effect(() => {
     return this.state$.pipe(
       filter((state) => state.testStatus === 'TESTING'),
-      map((state) => ({ ...state } as SettingsState)),
+      map((state) => ({ ...state } as Settings)),
       switchMap((settingsState) =>
         this.settingsService.testSettings(settingsState)
       ),

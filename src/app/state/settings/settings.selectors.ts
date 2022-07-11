@@ -1,4 +1,4 @@
 import { createFeatureSelector } from '@ngrx/store';
-import { SettingsState } from './settings.state';
+import { Settings } from '../../models/settings.state.model';
 
-export const selectSettings = createFeatureSelector<SettingsState>('settings');
+export const selectSettings = createFeatureSelector<Settings>('settings');

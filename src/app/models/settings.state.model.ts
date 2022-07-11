@@ -1,4 +1,4 @@
-export interface SettingsState {
+export interface Settings {
   pivotalApiToken?: string;
   pivotalProjectId?: string;
 }
