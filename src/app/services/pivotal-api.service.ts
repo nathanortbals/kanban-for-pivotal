@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { PivotalProject } from '../models/pivotal-project.model';
+import { PivotalStory } from '../models/pivotal-story.model';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,17 @@ export class PivotalApiService {
     const url = `${this.pivotalApiUrl}/projects/${pivotalProjectId}`;
 
     return this.httpClient.get<PivotalProject>(url, {
+      headers: { 'X-TrackerToken': pivotalApiToken },
+    });
+  }
+
+  public getPivotalStories(
+    pivotalApiToken: string,
+    pivotalProjectId: string
+  ): Observable<PivotalStory[]> {
+    const url = `${this.pivotalApiUrl}/projects/${pivotalProjectId}/stories`;
+
+    return this.httpClient.get<PivotalStory[]>(url, {
       headers: { 'X-TrackerToken': pivotalApiToken },
     });
   }

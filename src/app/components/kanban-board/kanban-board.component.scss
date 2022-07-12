@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+}
+
+:host > .kanban-board-column {
+  flex: 1;
+}
