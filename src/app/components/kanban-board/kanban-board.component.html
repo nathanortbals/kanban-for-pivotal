@@ -1,10 +1,12 @@
-<div class="kanban-board-column">
-  <div class="kanban-board-column-title">Unstarted</div>
-  <div *ngFor="let pivotalStory of pivotalStories$ | async">
-    {{ pivotalStory.name }}
+<ng-container *ngIf="pivotalStories$ | async as pivotalStories">
+  <div class="kanban-board-column">
+    <div class="kanban-board-column-title">Unstarted</div>
+    <div *ngFor="let pivotalStory of pivotalStories">
+      {{ pivotalStory.name }}
+    </div>
   </div>
-</div>
-<div class="kanban-board-column">Started</div>
-<div class="kanban-board-column">Finished</div>
-<div class="kanban-board-column">Delivered</div>
-<div class="kanban-board-column">Accepted</div>
+  <div class="kanban-board-column">Started</div>
+  <div class="kanban-board-column">Finished</div>
+  <div class="kanban-board-column">Delivered</div>
+  <div class="kanban-board-column">Accepted</div>
+</ng-container>

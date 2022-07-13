@@ -10,14 +10,15 @@ import {
   switchMap,
 } from 'rxjs';
 import { PivotalApiService } from 'src/app/services/pivotal-api.service';
+import { pivotalProjectLoadFailure } from '../pivotal-project/pivotal-project.actions';
 import { selectSettings } from '../settings/settings.selectors';
 import {
-  pivotalStoriesLoadFailure,
-  pivotalStoriesLoadSuccess,
-} from './pivotal-stories.actions';
+  pivotalIterationLoadFailure,
+  pivotalIterationLoadSuccess,
+} from './pivotal-iteration.actions';
 
 @Injectable()
-export class PivotalStoriesEffects {
+export class PivotalIterationEffects {
   loadPivotalStories$ = createEffect(() =>
     this.store$.select(selectSettings).pipe(
       filter(
@@ -31,13 +32,22 @@ export class PivotalStoriesEffects {
           settings.pivotalProjectId === otherSettings.pivotalProjectId
       ),
       switchMap((settings) => {
-        return this.pivotalApiService.getPivotalStories(
+        return this.pivotalApiService.getPivotalIterations(
           settings.pivotalApiToken!,
-          settings.pivotalProjectId!
+          settings.pivotalProjectId!,
+          'current'
         );
       }),
-      map((pivotalStories) => pivotalStoriesLoadSuccess({ pivotalStories })),
-      catchError(() => of(pivotalStoriesLoadFailure()))
+      map((pivotalIterations) => {
+        const pivotalIteration = pivotalIterations.at(0);
+
+        if (pivotalIteration) {
+          return pivotalIterationLoadSuccess({ pivotalIteration });
+        }
+
+        return pivotalProjectLoadFailure();
+      }),
+      catchError(() => of(pivotalIterationLoadFailure()))
     )
   );
 

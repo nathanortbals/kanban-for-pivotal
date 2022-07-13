@@ -19,10 +19,10 @@ import { AppComponent } from './app.component';
 import { KanbanBoardComponent } from './components/kanban-board/kanban-board.component';
 import { SettingsDialogComponent } from './components/settings-dialog/settings-dialog.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { PivotalIterationEffects } from './state/pivotal-iteration/pivotal-iteration.effects';
+import { pivotalIterationReducer } from './state/pivotal-iteration/pivotal-iteration.reducer';
 import { PivotalProjectEffects } from './state/pivotal-project/pivotal-project.effects';
 import { pivotalProjectReducer } from './state/pivotal-project/pivotal-project.reducer';
-import { PivotalStoriesEffects } from './state/pivotal-stories/pivotal-project.effects';
-import { pivotalStoriesReducer } from './state/pivotal-stories/pivotal-stories.reducer';
 import { SettingsEffects } from './state/settings/settings.effects';
 import { settingsReducer } from './state/settings/settings.reducer';
 
@@ -48,12 +48,12 @@ import { settingsReducer } from './state/settings/settings.reducer';
     StoreModule.forRoot({
       settings: settingsReducer,
       pivotalProject: pivotalProjectReducer,
-      pivotalStories: pivotalStoriesReducer,
+      pivotalStories: pivotalIterationReducer,
     }),
     EffectsModule.forRoot([
       SettingsEffects,
       PivotalProjectEffects,
-      PivotalStoriesEffects,
+      PivotalIterationEffects,
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
