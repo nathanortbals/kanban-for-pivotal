@@ -2,6 +2,6 @@
   display: flex;
 }
 
-:host > .kanban-board-column {
+:host > app-kanban-board-column {
   flex: 1;
 }

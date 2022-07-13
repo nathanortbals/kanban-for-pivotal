@@ -39,6 +39,7 @@ export class PivotalIterationEffects {
         );
       }),
       map((pivotalIterations) => {
+        console.log(pivotalIterations);
         const pivotalIteration = pivotalIterations.at(0);
 
         if (pivotalIteration) {
@@ -47,7 +48,10 @@ export class PivotalIterationEffects {
 
         return pivotalProjectLoadFailure();
       }),
-      catchError(() => of(pivotalIterationLoadFailure()))
+      catchError((error) => {
+        console.log(error);
+        return of(pivotalIterationLoadFailure());
+      })
     )
   );
 

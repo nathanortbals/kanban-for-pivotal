@@ -44,7 +44,7 @@ export class PivotalApiService {
   ): Observable<PivotalIteration[]> {
     const url = `${this.pivotalApiUrl}/projects/${pivotalProjectId}/iterations`;
 
-    const params = new HttpParams().set('scope', 'current');
+    const params = new HttpParams().set('scope', scope);
 
     return this.httpClient.get<PivotalIteration[]>(url, {
       params: params,
