@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { PivotalIteration } from '../models/pivotal-iteration';
+import { PivotalIteration } from '../models/pivotal-iteration.model';
 import { PivotalProject } from '../models/pivotal-project.model';
 
 @Injectable({

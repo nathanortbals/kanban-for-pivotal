@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Settings } from '../../models/settings.state.model';
+import { Settings } from '../../models/settings.model';
 import { saveSettings, settingsLoaded } from './settings.actions';
 
 export const initialState: Settings = {

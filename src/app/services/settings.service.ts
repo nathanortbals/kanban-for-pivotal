@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { Settings } from '../models/settings.state.model';
+import { Settings } from '../models/settings.model';
 import { PivotalApiService } from './pivotal-api.service';
 
 @Injectable({

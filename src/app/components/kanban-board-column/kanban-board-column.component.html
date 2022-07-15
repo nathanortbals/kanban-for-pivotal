@@ -1,5 +1,7 @@
 <ng-container *ngIf="pivotalStories$ | async as pivotalStories">
-  <div class="kanban-board-column-title">{{ pivotalStoryState }}</div>
+  <div class="kanban-board-column-title">
+    {{ pivotalStoryState | capitalize }}
+  </div>
   <div *ngFor="let pivotalStory of pivotalStories">
     {{ pivotalStory.name }}
   </div>

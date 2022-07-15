@@ -9,6 +9,7 @@ import { selectPivotalStoriesFromIterationByState } from 'src/app/state/pivotal-
   selector: 'app-kanban-board-column',
   templateUrl: './kanban-board-column.component.html',
   styleUrls: ['./kanban-board-column.component.scss'],
+  host: { class: 'kanban-board-column' },
 })
 export class KanbanBoardColumnComponent implements OnInit {
   @Input() pivotalStoryState: PivotalStoryState = PivotalStoryState.Unstarted;

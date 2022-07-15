@@ -27,6 +27,7 @@ import { PivotalProjectEffects } from './state/pivotal-project/pivotal-project.e
 import { pivotalProjectReducer } from './state/pivotal-project/pivotal-project.reducer';
 import { SettingsEffects } from './state/settings/settings.effects';
 import { settingsReducer } from './state/settings/settings.reducer';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { settingsReducer } from './state/settings/settings.reducer';
     SettingsDialogComponent,
     KanbanBoardComponent,
     KanbanBoardColumnComponent,
+    CapitalizePipe,
   ],
   imports: [
     BrowserModule,

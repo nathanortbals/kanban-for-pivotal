@@ -5,6 +5,8 @@
 // Plus imports for other components in your app.
 @use "./app/components/settings-dialog/settings-dialog.theme.scss" as
   settings-dialog;
+@use "./app/components/kanban-board-column/kanban-board-column.theme.scss" as
+  kanban-board-column;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -38,6 +40,7 @@ $pivotal-kanban-theme: mat.define-dark-theme(
 @include mat.all-component-themes($pivotal-kanban-theme);
 
 @include settings-dialog.theme($pivotal-kanban-theme);
+@include kanban-board-column.theme($pivotal-kanban-theme);
 
 /* You can add global styles to this file, and also import other style files */
 html,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Store } from '@ngrx/store';
 import { catchError, filter, map, of, switchMap, tap } from 'rxjs';
-import { Settings } from '../../models/settings.state.model';
+import { Settings } from '../../models/settings.model';
 import { SettingsService } from '../../services/settings.service';
 import { saveSettings } from '../../state/settings/settings.actions';
 import { selectSettings } from '../../state/settings/settings.selectors';

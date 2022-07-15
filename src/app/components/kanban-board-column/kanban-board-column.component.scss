@@ -1,3 +1,9 @@
 :host {
   height: 100%;
+  padding: 0 8px;
+}
+
+.kanban-board-column-title {
+  height: 32px;
+  line-height: 32px;
 }
