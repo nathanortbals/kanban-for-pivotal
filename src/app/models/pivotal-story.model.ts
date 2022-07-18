@@ -6,4 +6,5 @@ export interface PivotalStory {
   name: string;
   currentState: PivotalStoryState;
   storyType: PivotalStoryType;
+  ownerIds: number[];
 }

@@ -24,6 +24,8 @@ import { SettingsDialogComponent } from './components/settings-dialog/settings-d
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SnakeToCamelCaseInterceptor } from './interceptors/snake-to-camel-case.interceptor';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { PivotalPeopleEffects } from './state/pivotal-people/pivotal-people.effects';
+import { pivotalPeopleReducer } from './state/pivotal-people/pivotal-people.reducer';
 import { PivotalProjectEffects } from './state/pivotal-project/pivotal-project.effects';
 import { pivotalProjectReducer } from './state/pivotal-project/pivotal-project.reducer';
 import { PivotalStoriesEffects } from './state/pivotal-stories/pivotal-stories.effects';
@@ -58,11 +60,13 @@ import { settingsReducer } from './state/settings/settings.reducer';
       settings: settingsReducer,
       pivotalProject: pivotalProjectReducer,
       pivotalStories: pivotalStoriesReducer,
+      pivotalPeople: pivotalPeopleReducer,
     }),
     EffectsModule.forRoot([
       SettingsEffects,
       PivotalProjectEffects,
       PivotalStoriesEffects,
+      PivotalPeopleEffects,
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

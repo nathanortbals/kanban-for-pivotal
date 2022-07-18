@@ -10,4 +10,9 @@
   <div markdown [inline]="true" class="kanban-board-story-name">
     {{ pivotalStory.name }}
   </div>
+  <div class="kanban-board-story-owners">
+    <span *ngFor="let owner of owners | async">
+      {{ owner.name }}
+    </span>
+  </div>
 </ng-container>

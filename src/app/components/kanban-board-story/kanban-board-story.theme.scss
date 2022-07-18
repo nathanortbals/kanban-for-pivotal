@@ -16,12 +16,17 @@
       0.08
     );
   }
+
+  .kanban-board-story-owners {
+    color: mat.get-color-from-palette($foreground-palette, secondary-text);
+  }
 }
 
 @mixin typography($theme) {
   $typography-config: mat.get-typography-config($theme);
 
-  .kanban-board-story-type {
+  .kanban-board-story-type,
+  .kanban-board-story-owners {
     @include mat.typography-level($typography-config, "caption");
   }
 }

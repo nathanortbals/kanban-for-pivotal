@@ -2,6 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { PivotalIteration } from '../models/pivotal-iteration.model';
+import { PivotalPerson } from '../models/pivotal-person.model';
+import { PivotalProjectMembership } from '../models/pivotal-project-membership.model';
 import { PivotalProject } from '../models/pivotal-project.model';
 import { PivotalStory } from '../models/pivotal-story.model';
 
@@ -54,5 +56,24 @@ export class PivotalApiService {
         headers: { 'X-TrackerToken': pivotalApiToken },
       })
       .pipe(map((iterations) => iterations.at(0)!.stories));
+  }
+
+  public getPivotalPeopleForProject(
+    pivotalApiToken: string,
+    pivotalProjectId: string
+  ): Observable<PivotalPerson[]> {
+    const url = `${this.pivotalApiUrl}/projects/${pivotalProjectId}/memberships`;
+
+    return this.httpClient
+      .get<PivotalProjectMembership[]>(url, {
+        headers: { 'X-TrackerToken': pivotalApiToken },
+      })
+      .pipe(
+        map((projectMemberships) =>
+          projectMemberships.map(
+            (projectMembership) => projectMembership.person
+          )
+        )
+      );
   }
 }
