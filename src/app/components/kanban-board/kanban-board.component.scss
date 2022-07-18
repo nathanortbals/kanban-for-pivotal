@@ -1,6 +1,7 @@
 :host {
   display: flex;
   gap: 8px;
+  padding: 8px;
 }
 
 :host > app-kanban-board-column {

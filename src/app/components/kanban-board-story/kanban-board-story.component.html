@@ -1,0 +1,13 @@
+<ng-container *ngIf="pivotalStory">
+  <div
+    class="kanban-board-story-type kanban-board-story-type-{{
+      pivotalStory.storyType
+    }}"
+  >
+    {{ pivotalStory.storyType | capitalize }}
+  </div>
+
+  <div markdown [inline]="true" class="kanban-board-story-name">
+    {{ pivotalStory.name }}
+  </div>
+</ng-container>

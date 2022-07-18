@@ -2,7 +2,11 @@
   <div class="kanban-board-column-title">
     {{ pivotalStoryState | capitalize }}
   </div>
-  <div *ngFor="let pivotalStory of pivotalStories">
-    {{ pivotalStory.name }}
+  <div class="kanban-board-column-stories">
+    <app-kanban-board-story
+      *ngFor="let pivotalStory of pivotalStories"
+      [pivotalStory]="pivotalStory"
+    >
+    </app-kanban-board-story>
   </div>
 </ng-container>

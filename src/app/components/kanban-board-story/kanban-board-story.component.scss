@@ -1,0 +1,47 @@
+$feature-color: lightgreen;
+$bug-color: lightcoral;
+$release-color: lightskyblue;
+$chore-color: lightgray;
+
+:host {
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 4px 8px 8px 8px;
+}
+
+.kanban-board-story-header {
+  flex: 1;
+  justify-content: space-between;
+}
+
+:host(.kanban-board-story-feature) {
+  border-left: 4px solid $feature-color;
+}
+
+:host(.kanban-board-story-bug) {
+  border-left: 4px solid $bug-color;
+}
+
+:host(.kanban-board-story-release) {
+  border-left: 4px solid $release-color;
+}
+
+:host(.kanban-board-story-chore) {
+  border-left: 4px solid $chore-color;
+}
+
+.kanban-board-story-type-feature {
+  color: $feature-color;
+}
+
+.kanban-board-story-type-bug {
+  color: $bug-color;
+}
+
+.kanban-board-story-type-release {
+  color: $release-color;
+}
+
+.kanban-board-story-type-chore {
+  color: $chore-color;
+}
