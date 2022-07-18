@@ -24,10 +24,10 @@ import { SettingsDialogComponent } from './components/settings-dialog/settings-d
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SnakeToCamelCaseInterceptor } from './interceptors/snake-to-camel-case.interceptor';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
-import { PivotalIterationEffects } from './state/pivotal-iteration/pivotal-iteration.effects';
-import { pivotalIterationReducer } from './state/pivotal-iteration/pivotal-iteration.reducer';
 import { PivotalProjectEffects } from './state/pivotal-project/pivotal-project.effects';
 import { pivotalProjectReducer } from './state/pivotal-project/pivotal-project.reducer';
+import { PivotalStoriesEffects } from './state/pivotal-stories/pivotal-stories.effects';
+import { pivotalStoriesReducer } from './state/pivotal-stories/pivotal-stories.reducer';
 import { SettingsEffects } from './state/settings/settings.effects';
 import { settingsReducer } from './state/settings/settings.reducer';
 
@@ -57,12 +57,12 @@ import { settingsReducer } from './state/settings/settings.reducer';
     StoreModule.forRoot({
       settings: settingsReducer,
       pivotalProject: pivotalProjectReducer,
-      pivotalStories: pivotalIterationReducer,
+      pivotalStories: pivotalStoriesReducer,
     }),
     EffectsModule.forRoot([
       SettingsEffects,
       PivotalProjectEffects,
-      PivotalIterationEffects,
+      PivotalStoriesEffects,
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

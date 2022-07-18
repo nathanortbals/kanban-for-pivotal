@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { PivotalStoryState } from 'src/app/models/pivotal-story-state.model';
 import { PivotalStory } from 'src/app/models/pivotal-story.model';
-import { selectPivotalStoriesFromIterationByState } from 'src/app/state/pivotal-iteration/pivotal-iteration.selectors';
+import { selectPivotalStoriesByState } from 'src/app/state/pivotal-stories/pivotal-stories.selectors';
 
 @Component({
   selector: 'app-kanban-board-column',
@@ -21,7 +21,7 @@ export class KanbanBoardColumnComponent implements OnInit {
 
   ngOnInit(): void {
     this.pivotalStories$ = this.store.select(
-      selectPivotalStoriesFromIterationByState(this.pivotalStoryState)
+      selectPivotalStoriesByState(this.pivotalStoryState)
     );
   }
 }
