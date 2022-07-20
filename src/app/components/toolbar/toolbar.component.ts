@@ -19,8 +19,6 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  refresh() {}
-
   openSettings() {
     this.dialog.open(SettingsDialogComponent, { disableClose: true });
   }
