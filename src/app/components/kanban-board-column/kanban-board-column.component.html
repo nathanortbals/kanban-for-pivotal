@@ -10,11 +10,13 @@
     [cdkDropListData]="pivotalStories"
     (cdkDropListDropped)="storyDropped($event)"
     [cdkDropListConnectedTo]="connectedPivotalStoryStates"
+    [cdkDropListEnterPredicate]="canPivotalStoryEnterState"
   >
     <app-kanban-board-story
       cdkDrag
       [id]="pivotalStoryState"
       *ngFor="let pivotalStory of pivotalStories"
+      [cdkDragData]="pivotalStory"
       [pivotalStory]="pivotalStory"
     >
     </app-kanban-board-story>

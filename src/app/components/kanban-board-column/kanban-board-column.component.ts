@@ -1,4 +1,4 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
@@ -19,6 +19,13 @@ export class KanbanBoardColumnComponent implements OnInit {
 
   public pivotalStories$: Observable<PivotalStory[]> = of([]);
 
+  private readonly storyStatesRequiringEstimate = [
+    PivotalStoryState.Accepted,
+    PivotalStoryState.Delivered,
+    PivotalStoryState.Finished,
+    PivotalStoryState.Rejected,
+  ];
+
   constructor(private store: Store) {}
 
   ngOnInit(): void {
@@ -26,6 +33,13 @@ export class KanbanBoardColumnComponent implements OnInit {
       selectPivotalStoriesByState(this.pivotalStoryState)
     );
   }
+
+  canPivotalStoryEnterState = (item: CdkDrag<PivotalStory>): boolean => {
+    return !(
+      item.data.estimate === undefined &&
+      this.storyStatesRequiringEstimate.includes(this.pivotalStoryState)
+    );
+  };
 
   storyDropped(event: CdkDragDrop<PivotalStory[]>) {
     const pivotalStoryId = event.previousContainer.data[event.previousIndex].id;

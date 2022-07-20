@@ -33,6 +33,7 @@ import { PivotalStoriesEffects } from './state/pivotal-stories/pivotal-stories.e
 import { pivotalStoriesReducer } from './state/pivotal-stories/pivotal-stories.reducer';
 import { SettingsEffects } from './state/settings/settings.effects';
 import { settingsReducer } from './state/settings/settings.reducer';
+import { EstimatePipe } from './pipes/estimate.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { settingsReducer } from './state/settings/settings.reducer';
     KanbanBoardColumnComponent,
     CapitalizePipe,
     KanbanBoardStoryComponent,
+    EstimatePipe,
   ],
   imports: [
     BrowserModule,

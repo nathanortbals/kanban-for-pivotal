@@ -3,45 +3,45 @@ $bug-color: lightcoral;
 $release-color: lightskyblue;
 $chore-color: lightgray;
 
-:host {
+.kanban-board-story-container {
   border-radius: 4px;
   overflow: hidden;
   padding: 4px 8px 8px 8px;
 }
 
 .kanban-board-story-header {
-  flex: 1;
+  display: flex;
   justify-content: space-between;
 }
 
-:host(.kanban-board-story-feature) {
+.feature {
   border-left: 4px solid $feature-color;
 }
 
-:host(.kanban-board-story-bug) {
+.bug {
   border-left: 4px solid $bug-color;
 }
 
-:host(.kanban-board-story-release) {
+.release {
   border-left: 4px solid $release-color;
 }
 
-:host(.kanban-board-story-chore) {
+.chore {
   border-left: 4px solid $chore-color;
 }
 
-.kanban-board-story-type-feature {
+.feature > .kanban-board-story-header > .kanban-board-story-type {
   color: $feature-color;
 }
 
-.kanban-board-story-type-bug {
+.bug > .kanban-board-story-header > .kanban-board-story-type {
   color: $bug-color;
 }
 
-.kanban-board-story-type-release {
+.release > .kanban-board-story-header > .kanban-board-story-type {
   color: $release-color;
 }
 
-.kanban-board-story-type-chore {
+.chore > .kanban-board-story-header > .kanban-board-story-type {
   color: $chore-color;
 }

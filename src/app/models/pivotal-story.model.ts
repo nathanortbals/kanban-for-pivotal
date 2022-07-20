@@ -7,4 +7,5 @@ export interface PivotalStory {
   currentState: PivotalStoryState;
   storyType: PivotalStoryType;
   ownerIds: number[];
+  estimate: number | undefined;
 }
