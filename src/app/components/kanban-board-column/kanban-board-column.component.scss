@@ -13,6 +13,11 @@
 .kanban-board-column-stories {
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 8px;
   padding: 8px;
+}
+
+.kanban-board-column-stories > app-kanban-board-story {
+  cursor: move;
 }

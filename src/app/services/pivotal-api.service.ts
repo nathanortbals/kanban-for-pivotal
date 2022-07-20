@@ -5,6 +5,7 @@ import { PivotalIteration } from '../models/pivotal-iteration.model';
 import { PivotalPerson } from '../models/pivotal-person.model';
 import { PivotalProjectMembership } from '../models/pivotal-project-membership.model';
 import { PivotalProject } from '../models/pivotal-project.model';
+import { PivotalStoryState } from '../models/pivotal-story-state.model';
 import { PivotalStory } from '../models/pivotal-story.model';
 
 @Injectable({
@@ -75,5 +76,24 @@ export class PivotalApiService {
           )
         )
       );
+  }
+
+  public updatePivotalStoryState(
+    pivotalApiToken: string,
+    pivotalProjectId: string,
+    pivotalStoryId: number,
+    pivotalStoryState: PivotalStoryState
+  ): Observable<any> {
+    const url = `${this.pivotalApiUrl}/projects/${pivotalProjectId}/stories/${pivotalStoryId}`;
+
+    return this.httpClient.put(
+      url,
+      {
+        current_state: pivotalStoryState,
+      },
+      {
+        headers: { 'X-TrackerToken': pivotalApiToken },
+      }
+    );
   }
 }

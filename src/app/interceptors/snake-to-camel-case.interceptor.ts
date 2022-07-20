@@ -18,7 +18,6 @@ export class SnakeToCamelCaseInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       map((event) => {
-        console.log(req.url);
         if (event instanceof HttpResponse) {
           return event.clone({
             body: this.keysToCamelCase(event.body),

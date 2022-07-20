@@ -3,6 +3,7 @@ import {
   pivotalStoriesLoadFailure,
   pivotalStoriesLoading,
   pivotalStoriesLoadSuccess,
+  updatePivotalStoryState,
 } from './pivotal-stories.actions';
 import { PivotalStoriesState } from './pivotal-stories.state';
 
@@ -24,5 +25,16 @@ export const pivotalStoriesReducer = createReducer(
   on(pivotalStoriesLoadFailure, (state) => ({
     pivotalStories: [],
     loadState: 'FAILURE',
-  }))
+  })),
+  on(
+    updatePivotalStoryState,
+    (state, { pivotalStoryId, pivotalStoryState }) => ({
+      ...state,
+      pivotalStories: state.pivotalStories.map((pivotalStory) =>
+        pivotalStory.id === pivotalStoryId
+          ? { ...pivotalStory, currentState: pivotalStoryState }
+          : pivotalStory
+      ),
+    })
+  )
 );

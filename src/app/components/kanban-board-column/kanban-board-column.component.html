@@ -2,8 +2,18 @@
   <div class="kanban-board-column-title">
     {{ pivotalStoryState | capitalize }}
   </div>
-  <div class="kanban-board-column-stories">
+  <div
+    class="kanban-board-column-stories"
+    cdkDropList
+    cdkDropListSortingDisabled
+    [id]="pivotalStoryState"
+    [cdkDropListData]="pivotalStories"
+    (cdkDropListDropped)="storyDropped($event)"
+    [cdkDropListConnectedTo]="connectedPivotalStoryStates"
+  >
     <app-kanban-board-story
+      cdkDrag
+      [id]="pivotalStoryState"
       *ngFor="let pivotalStory of pivotalStories"
       [pivotalStory]="pivotalStory"
     >

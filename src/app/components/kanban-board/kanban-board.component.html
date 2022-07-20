@@ -1,15 +1,45 @@
 <app-kanban-board-column
   [pivotalStoryState]="PivotalStoryState.Planned"
+  [connectedPivotalStoryStates]="[
+    PivotalStoryState.Started,
+    PivotalStoryState.Finished,
+    PivotalStoryState.Delivered,
+    PivotalStoryState.Accepted
+  ]"
 ></app-kanban-board-column>
 <app-kanban-board-column
   [pivotalStoryState]="PivotalStoryState.Started"
+  [connectedPivotalStoryStates]="[
+    PivotalStoryState.Planned,
+    PivotalStoryState.Finished,
+    PivotalStoryState.Delivered,
+    PivotalStoryState.Accepted
+  ]"
 ></app-kanban-board-column>
 <app-kanban-board-column
   [pivotalStoryState]="PivotalStoryState.Finished"
+  [connectedPivotalStoryStates]="[
+    PivotalStoryState.Planned,
+    PivotalStoryState.Started,
+    PivotalStoryState.Delivered,
+    PivotalStoryState.Accepted
+  ]"
 ></app-kanban-board-column>
 <app-kanban-board-column
   [pivotalStoryState]="PivotalStoryState.Delivered"
+  [connectedPivotalStoryStates]="[
+    PivotalStoryState.Planned,
+    PivotalStoryState.Started,
+    PivotalStoryState.Finished,
+    PivotalStoryState.Accepted
+  ]"
 ></app-kanban-board-column>
 <app-kanban-board-column
   [pivotalStoryState]="PivotalStoryState.Accepted"
+  [connectedPivotalStoryStates]="[
+    PivotalStoryState.Planned,
+    PivotalStoryState.Started,
+    PivotalStoryState.Finished,
+    PivotalStoryState.Delivered
+  ]"
 ></app-kanban-board-column>
