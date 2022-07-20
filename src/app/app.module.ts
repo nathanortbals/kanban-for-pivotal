@@ -3,6 +3,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,9 +23,11 @@ import { KanbanBoardColumnComponent } from './components/kanban-board-column/kan
 import { KanbanBoardStoryComponent } from './components/kanban-board-story/kanban-board-story.component';
 import { KanbanBoardComponent } from './components/kanban-board/kanban-board.component';
 import { SettingsDialogComponent } from './components/settings-dialog/settings-dialog.component';
+import { StoryDialogComponent } from './components/story-dialog/story-dialog.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SnakeToCamelCaseInterceptor } from './interceptors/snake-to-camel-case.interceptor';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { EstimatePipe } from './pipes/estimate.pipe';
 import { PivotalPeopleEffects } from './state/pivotal-people/pivotal-people.effects';
 import { pivotalPeopleReducer } from './state/pivotal-people/pivotal-people.reducer';
 import { PivotalProjectEffects } from './state/pivotal-project/pivotal-project.effects';
@@ -33,7 +36,6 @@ import { PivotalStoriesEffects } from './state/pivotal-stories/pivotal-stories.e
 import { pivotalStoriesReducer } from './state/pivotal-stories/pivotal-stories.reducer';
 import { SettingsEffects } from './state/settings/settings.effects';
 import { settingsReducer } from './state/settings/settings.reducer';
-import { EstimatePipe } from './pipes/estimate.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { EstimatePipe } from './pipes/estimate.pipe';
     CapitalizePipe,
     KanbanBoardStoryComponent,
     EstimatePipe,
+    StoryDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { EstimatePipe } from './pipes/estimate.pipe';
     HttpClientModule,
     MatSnackBarModule,
     DragDropModule,
+    MatRippleModule,
     MarkdownModule.forRoot(),
     StoreModule.forRoot({
       settings: settingsReducer,

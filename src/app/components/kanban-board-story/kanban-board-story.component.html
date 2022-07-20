@@ -2,6 +2,8 @@
   *ngIf="pivotalStory"
   class="kanban-board-story-container"
   [ngClass]="pivotalStory.storyType"
+  (click)="openStoryDialog()"
+  matRipple
 >
   <div class="kanban-board-story-header">
     <div class="kanban-board-story-type">
