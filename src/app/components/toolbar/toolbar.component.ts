@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { selectPivotalProjectName } from '../../state/pivotal-project/pivotal-project.selectors';
 import { SettingsDialogComponent } from '../settings-dialog/settings-dialog.component';
 
@@ -14,7 +14,9 @@ export class ToolbarComponent implements OnInit {
   public readonly toolbarTitle$: Observable<string | undefined>;
 
   constructor(public store: Store, private dialog: MatDialog) {
-    this.toolbarTitle$ = store.select(selectPivotalProjectName);
+    this.toolbarTitle$ = store
+      .select(selectPivotalProjectName)
+      .pipe(map((projectName) => projectName ?? 'Kanban for Pivotal'));
   }
 
   ngOnInit(): void {}

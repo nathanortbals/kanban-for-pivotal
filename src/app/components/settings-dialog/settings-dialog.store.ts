@@ -8,8 +8,8 @@ import { saveSettings } from '../../state/settings/settings.actions';
 import { selectSettings } from '../../state/settings/settings.selectors';
 
 export interface SettingsDialogState {
-  pivotalApiToken: string | undefined;
-  pivotalProjectId: string | undefined;
+  pivotalApiToken: string | null;
+  pivotalProjectId: string | null;
   testStatus: SettingsDialogTestStatus;
 }
 
@@ -23,8 +23,8 @@ export type SettingsDialogTestStatus =
 export class SettingsDialogStore extends ComponentStore<SettingsDialogState> {
   constructor(private settingsService: SettingsService, private store: Store) {
     super({
-      pivotalApiToken: '',
-      pivotalProjectId: '',
+      pivotalApiToken: null,
+      pivotalProjectId: null,
       testStatus: 'UNTESTED',
     });
 
@@ -54,19 +54,17 @@ export class SettingsDialogStore extends ComponentStore<SettingsDialogState> {
   });
 
   // UPDATERS
-  readonly setPivotalApiToken = this.updater(
-    (state, value: string | undefined) => ({
-      ...state,
-      pivotalApiToken: value,
-      testStatus:
-        state.pivotalApiToken === state.pivotalProjectId
-          ? state.testStatus
-          : 'UNTESTED',
-    })
-  );
+  readonly setPivotalApiToken = this.updater((state, value: string | null) => ({
+    ...state,
+    pivotalApiToken: value,
+    testStatus:
+      state.pivotalApiToken === state.pivotalProjectId
+        ? state.testStatus
+        : 'UNTESTED',
+  }));
 
   readonly setPivotalProjectId = this.updater(
-    (state, value: string | undefined) => ({
+    (state, value: string | null) => ({
       ...state,
       pivotalProjectId: value,
       testStatus:

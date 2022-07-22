@@ -7,7 +7,7 @@ import { PivotalApiService } from './pivotal-api.service';
   providedIn: 'root',
 })
 export class SettingsService {
-  private readonly localStorageKey = 'pivotal-kanban-settings-storage';
+  private readonly localStorageKey = 'kanban-for-pivotal-settings-storage';
 
   constructor(private pivotalApiService: PivotalApiService) {}
 
@@ -15,7 +15,7 @@ export class SettingsService {
     const pivotalKanbanSettings = localStorage.getItem(this.localStorageKey);
 
     if (!pivotalKanbanSettings) {
-      return {};
+      return { pivotalApiToken: null, pivotalProjectId: null };
     }
 
     return JSON.parse(pivotalKanbanSettings) as Settings;

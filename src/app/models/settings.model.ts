@@ -1,4 +1,4 @@
 export interface Settings {
-  pivotalApiToken?: string;
-  pivotalProjectId?: string;
+  pivotalApiToken: string | null;
+  pivotalProjectId: string | null;
 }

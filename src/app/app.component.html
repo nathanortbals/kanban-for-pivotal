@@ -1,1 +1,7 @@
-<app-toolbar></app-toolbar> <app-kanban-board></app-kanban-board>
+<app-toolbar></app-toolbar>
+<app-kanban-board
+  *ngIf="showKanbanBoard$ | async; else getStartedPage"
+></app-kanban-board>
+<ng-template #getStartedPage>
+  <app-get-started-page></app-get-started-page>
+</ng-template>

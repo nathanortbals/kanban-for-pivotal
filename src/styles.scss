@@ -18,35 +18,35 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$pivotal-kanban-primary: mat.define-palette(mat.$cyan-palette);
-$pivotal-kanban-accent: mat.define-palette(mat.$yellow-palette);
+$kanban-for-pivotal-primary: mat.define-palette(mat.$cyan-palette);
+$kanban-for-pivotal-accent: mat.define-palette(mat.$yellow-palette);
 
 // The warn palette is optional (defaults to red).
-$pivotal-kanban-warn: mat.define-palette(mat.$red-palette);
+$kanban-for-pivotal-warn: mat.define-palette(mat.$red-palette);
 
-$pivotal-kanban-typography: mat.define-typography-config();
+$kanban-for-pivotal-typography: mat.define-typography-config();
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$pivotal-kanban-theme: mat.define-dark-theme(
+$kanban-for-pivotal-theme: mat.define-dark-theme(
   (
     color: (
-      primary: $pivotal-kanban-primary,
-      accent: $pivotal-kanban-accent,
-      warn: $pivotal-kanban-warn,
+      primary: $kanban-for-pivotal-primary,
+      accent: $kanban-for-pivotal-accent,
+      warn: $kanban-for-pivotal-warn,
     ),
-    typography: $pivotal-kanban-typography,
+    typography: $kanban-for-pivotal-typography,
   )
 );
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($pivotal-kanban-theme);
+@include mat.all-component-themes($kanban-for-pivotal-theme);
 
-@include settings-dialog.theme($pivotal-kanban-theme);
-@include kanban-board-column.theme($pivotal-kanban-theme);
-@include kanban-board-story.theme($pivotal-kanban-theme);
+@include settings-dialog.theme($kanban-for-pivotal-theme);
+@include kanban-board-column.theme($kanban-for-pivotal-theme);
+@include kanban-board-story.theme($kanban-for-pivotal-theme);
 
 /* You can add global styles to this file, and also import other style files */
 html,

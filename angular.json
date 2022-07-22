@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pivotal-kanban": {
+    "kanban-for-pivotal": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,7 +30,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pivotal-kanban",
+            "outputPath": "dist/kanban-for-pivotal",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pivotal-kanban:build:production"
+              "browserTarget": "kanban-for-pivotal:build:production"
             },
             "development": {
-              "browserTarget": "pivotal-kanban:build:development"
+              "browserTarget": "kanban-for-pivotal:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pivotal-kanban:build"
+            "browserTarget": "kanban-for-pivotal:build"
           }
         },
         "test": {

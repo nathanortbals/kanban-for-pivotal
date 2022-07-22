@@ -4,7 +4,12 @@ import { PivotalProjectState } from './pivotal-project.state';
 export const selectPivotalProjectState =
   createFeatureSelector<PivotalProjectState>('pivotalProject');
 
-export const selectPivotalProjectName = createSelector(
+export const selectPivotalProject = createSelector(
   selectPivotalProjectState,
-  (pivotalProjectState) => pivotalProjectState.pivotalProject?.name
+  (pivotalProjectState) => pivotalProjectState.pivotalProject
+);
+
+export const selectPivotalProjectName = createSelector(
+  selectPivotalProject,
+  (pivotalProject) => pivotalProject?.name
 );

@@ -36,6 +36,7 @@ import { PivotalStoriesEffects } from './state/pivotal-stories/pivotal-stories.e
 import { pivotalStoriesReducer } from './state/pivotal-stories/pivotal-stories.reducer';
 import { SettingsEffects } from './state/settings/settings.effects';
 import { settingsReducer } from './state/settings/settings.reducer';
+import { GetStartedPageComponent } from './components/get-started-page/get-started-page.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { settingsReducer } from './state/settings/settings.reducer';
     KanbanBoardStoryComponent,
     EstimatePipe,
     StoryDialogComponent,
+    GetStartedPageComponent,
   ],
   imports: [
     BrowserModule,

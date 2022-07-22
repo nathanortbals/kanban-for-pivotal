@@ -8,6 +8,7 @@ import {
   map,
   of,
   switchMap,
+  tap,
 } from 'rxjs';
 import { PivotalApiService } from 'src/app/services/pivotal-api.service';
 import { selectSettings } from '../settings/settings.selectors';
@@ -20,6 +21,7 @@ import {
 export class PivotalProjectEffects {
   loadPivotalProject$ = createEffect(() =>
     this.store$.select(selectSettings).pipe(
+      tap((settings) => console.log(settings)),
       filter(
         (settings) =>
           settings.pivotalApiToken != undefined &&

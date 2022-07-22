@@ -3,8 +3,8 @@ import { Settings } from '../../models/settings.model';
 import { saveSettings, settingsLoaded } from './settings.actions';
 
 export const initialState: Settings = {
-  pivotalApiToken: '',
-  pivotalProjectId: '',
+  pivotalApiToken: null,
+  pivotalProjectId: null,
 };
 
 export const settingsReducer = createReducer(
