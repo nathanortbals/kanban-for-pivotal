@@ -1,5 +1,5 @@
 {
-  "name": "pivotal-kanban",
+  "name": "kanban-for-pivotal",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
