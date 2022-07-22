@@ -54,16 +54,12 @@
 
 .stars {
   z-index: 0;
-  background: url("/assets/stars.png") repeat top center;
+  background: url("../../../assets/stars.png") repeat top center;
 }
 
 .twinkling {
   z-index: 1;
-  background: transparent url("/assets/twinkling.png") repeat top center;
-  -moz-animation: move-twinkling-back 300s linear infinite;
-  -ms-animation: move-twinkling-back 300s linear infinite;
-  -o-animation: move-twinkling-back 300s linear infinite;
-  -webkit-animation: move-twinkling-back 300s linear infinite;
+  background: transparent url("../../../assets/twinkling.png") repeat top center;
   animation: move-twinkling-back 300s linear infinite;
 }
 
