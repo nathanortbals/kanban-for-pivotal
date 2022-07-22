@@ -1,0 +1,23 @@
+:host {
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.kanban-board-column-title {
+  height: 32px;
+  line-height: 32px;
+  padding: 0 8px;
+}
+
+.kanban-board-column-stories {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 8px;
+  padding: 8px;
+}
+
+.kanban-board-column-stories > app-kanban-board-story {
+  cursor: pointer;
+}

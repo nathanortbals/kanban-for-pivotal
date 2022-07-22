@@ -1,0 +1,54 @@
+<h1 mat-dialog-title class="settings-dialog-title">
+  <mat-icon>settings</mat-icon>
+  Settings
+</h1>
+<form mat-dialog-content class="settings-form">
+  <mat-form-field class="settings-form-field">
+    <mat-label>Pivotal API Token</mat-label>
+    <input
+      matInput
+      [ngModel]="settingsDialogStore.pivotalApiToken$ | async"
+      (ngModelChange)="settingsDialogStore.setPivotalApiToken($event)"
+      name="Pivotal Api Token"
+    />
+    <mat-hint>The pivotal api token located in your profile</mat-hint>
+  </mat-form-field>
+  <mat-form-field class="settings-form-field">
+    <mat-label>Pivotal Project Id</mat-label>
+    <input
+      matInput
+      [ngModel]="settingsDialogStore.pivotalProjectId$ | async"
+      (ngModelChange)="settingsDialogStore.setPivotalProjectId($event)"
+      name="Pivotal Project Id"
+    />
+    <mat-hint
+      >Ex: https://www.pivotaltracker.com/n/projects/<b>12345</b></mat-hint
+    >
+  </mat-form-field>
+</form>
+<div mat-dialog-actions align="end">
+  <ng-container [ngSwitch]="settingsDialogStore.testStatus$ | async">
+    <button mat-button (click)="test()" *ngSwitchCase="'UNTESTED'">Test</button>
+    <span
+      class="settings-dialog-success settings-test-item"
+      *ngSwitchCase="'SUCCESS'"
+    >
+      Connected to Pivotal Api
+    </span>
+    <span
+      class="settings-dialog-error settings-test-item"
+      *ngSwitchCase="'FAILURE'"
+    >
+      Error connecting to Pivotal Api
+    </span>
+  </ng-container>
+
+  <button
+    mat-button
+    (click)="save()"
+    [disabled]="!(settingsDialogStore.saveEnabled$ | async)"
+  >
+    Save
+  </button>
+  <button mat-button color="warn" (click)="cancel()">Cancel</button>
+</div>

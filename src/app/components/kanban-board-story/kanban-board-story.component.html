@@ -1,0 +1,25 @@
+<div
+  *ngIf="pivotalStory"
+  class="kanban-board-story-container"
+  [ngClass]="pivotalStory.storyType"
+  (click)="openStoryDialog()"
+  matRipple
+>
+  <div class="kanban-board-story-header">
+    <div class="kanban-board-story-type">
+      {{ pivotalStory.storyType | capitalize }}
+    </div>
+    <div class="kanban-board-story-estimate">
+      {{ pivotalStory.estimate | estimate }}
+    </div>
+  </div>
+
+  <div markdown [inline]="true" class="kanban-board-story-name">
+    {{ pivotalStory.name }}
+  </div>
+  <div class="kanban-board-story-owners">
+    <span *ngFor="let owner of owners | async">
+      {{ owner.name }}
+    </span>
+  </div>
+</div>

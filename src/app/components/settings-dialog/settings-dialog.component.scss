@@ -1,0 +1,22 @@
+.settings-dialog-title {
+  display: flex;
+  align-items: center;
+}
+
+.settings-dialog-title > mat-icon {
+  margin-right: 8px;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-form-field {
+  width: 500px;
+  margin-bottom: 16px;
+}
+
+.settings-test-item {
+  margin-right: 8px;
+}
