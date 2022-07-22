@@ -1,4 +1,10 @@
-import { createFeatureSelector } from '@ngrx/store';
-import { Settings } from '../../models/settings.model';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { SettingsState } from './settings.state';
 
-export const selectSettings = createFeatureSelector<Settings>('settings');
+export const selectSettingsState =
+  createFeatureSelector<SettingsState>('settings');
+
+export const selectSettings = createSelector(
+  selectSettingsState,
+  (settingsState) => settingsState.settings
+);

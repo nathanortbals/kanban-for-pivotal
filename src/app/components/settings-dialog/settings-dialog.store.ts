@@ -29,8 +29,10 @@ export class SettingsDialogStore extends ComponentStore<SettingsDialogState> {
     });
 
     this.store.select(selectSettings).subscribe((settings) => {
-      this.setPivotalApiToken(settings.pivotalApiToken);
-      this.setPivotalProjectId(settings.pivotalProjectId);
+      if (settings) {
+        this.setPivotalApiToken(settings.pivotalApiToken);
+        this.setPivotalProjectId(settings.pivotalProjectId);
+      }
     });
   }
 
@@ -79,16 +81,6 @@ export class SettingsDialogStore extends ComponentStore<SettingsDialogState> {
     testStatus: 'TESTING',
   }));
 
-  private get settingsAsState(): Settings {
-    const pivotalApiToken = this.get((settings) => settings.pivotalApiToken);
-    const pivotalProjectId = this.get((settings) => settings.pivotalProjectId);
-
-    return {
-      pivotalApiToken,
-      pivotalProjectId,
-    };
-  }
-
   private readonly setTestStatus = this.updater(
     (state, value: SettingsDialogTestStatus) => ({
       ...state,
@@ -97,7 +89,14 @@ export class SettingsDialogStore extends ComponentStore<SettingsDialogState> {
   );
 
   readonly saveSettings = () => {
-    this.store.dispatch(saveSettings({ settings: this.settingsAsState }));
+    const pivotalApiToken = this.get((settings) => settings.pivotalApiToken);
+    const pivotalProjectId = this.get((settings) => settings.pivotalProjectId);
+
+    if (pivotalApiToken && pivotalProjectId) {
+      this.store.dispatch(
+        saveSettings({ settings: { pivotalApiToken, pivotalProjectId } })
+      );
+    }
   };
 
   // EFFECTS

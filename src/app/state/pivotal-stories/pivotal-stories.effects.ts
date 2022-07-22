@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import {
   catchError,
   concatMap,
-  distinctUntilChanged,
   filter,
   map,
   of,
@@ -25,20 +24,11 @@ import {
 export class PivotalStoriesEffects {
   loadPivotalStories$ = createEffect(() =>
     this.store$.select(selectSettings).pipe(
-      filter(
-        (settings) =>
-          settings.pivotalApiToken != undefined &&
-          settings.pivotalProjectId != undefined
-      ),
-      distinctUntilChanged(
-        (settings, otherSettings) =>
-          settings.pivotalApiToken === otherSettings.pivotalApiToken &&
-          settings.pivotalProjectId === otherSettings.pivotalProjectId
-      ),
+      filter((settings) => settings !== null),
       switchMap((settings) =>
         this.pivotalApiService.getPivotalStoriesFromCurrentIteration(
-          settings.pivotalApiToken!,
-          settings.pivotalProjectId!
+          settings!.pivotalApiToken,
+          settings!.pivotalProjectId!
         )
       ),
       map((pivotalStories) => pivotalStoriesLoadSuccess({ pivotalStories })),
@@ -50,10 +40,11 @@ export class PivotalStoriesEffects {
     this.actions$.pipe(
       ofType(updatePivotalStoryState),
       withLatestFrom(this.store.select(selectSettings)),
+      filter(([_, settings]) => settings !== null),
       concatMap(([{ pivotalStoryId, pivotalStoryState }, settings]) =>
         this.pivotalApiService.updatePivotalStoryState(
-          settings.pivotalApiToken!,
-          settings.pivotalProjectId!,
+          settings!.pivotalApiToken!,
+          settings!.pivotalProjectId!,
           pivotalStoryId,
           pivotalStoryState
         )

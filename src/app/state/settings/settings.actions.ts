@@ -5,7 +5,7 @@ export const loadSettings = createAction('[Settings] LOAD_SETTINGS');
 
 export const settingsLoaded = createAction(
   '[Settings] SETTINGS_LOADED',
-  props<{ settings: Settings }>()
+  props<{ settings: Settings | null }>()
 );
 
 export const saveSettings = createAction(

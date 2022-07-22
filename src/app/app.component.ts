@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable, tap } from 'rxjs';
-import { selectPivotalProject } from './state/pivotal-project/pivotal-project.selectors';
+import { map, Observable } from 'rxjs';
+import { selectSettings } from './state/settings/settings.selectors';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,11 @@ import { selectPivotalProject } from './state/pivotal-project/pivotal-project.se
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  showKanbanBoard$: Observable<boolean>;
+  showStartPage$: Observable<boolean>;
 
   constructor(private store: Store) {
-    this.showKanbanBoard$ = this.store.select(selectPivotalProject).pipe(
-      tap((pivotalProject) => console.log(pivotalProject)),
-      map((pivotalProject) => pivotalProject !== null)
-    );
+    this.showStartPage$ = this.store
+      .select(selectSettings)
+      .pipe(map((settings) => settings === null));
   }
 }

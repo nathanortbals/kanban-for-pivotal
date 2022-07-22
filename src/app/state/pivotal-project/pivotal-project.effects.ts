@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createEffect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import {
-  catchError,
-  distinctUntilChanged,
-  filter,
-  map,
-  of,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { catchError, filter, map, of, switchMap } from 'rxjs';
 import { PivotalApiService } from 'src/app/services/pivotal-api.service';
 import { selectSettings } from '../settings/settings.selectors';
 import {
@@ -21,21 +13,11 @@ import {
 export class PivotalProjectEffects {
   loadPivotalProject$ = createEffect(() =>
     this.store$.select(selectSettings).pipe(
-      tap((settings) => console.log(settings)),
-      filter(
-        (settings) =>
-          settings.pivotalApiToken != undefined &&
-          settings.pivotalProjectId != undefined
-      ),
-      distinctUntilChanged(
-        (settings, otherSettings) =>
-          settings.pivotalApiToken === otherSettings.pivotalApiToken &&
-          settings.pivotalProjectId === otherSettings.pivotalProjectId
-      ),
+      filter((settings) => settings !== null),
       switchMap((settings) => {
         return this.pivotalApiService.getProject(
-          settings.pivotalApiToken!,
-          settings.pivotalProjectId!
+          settings!.pivotalApiToken,
+          settings!.pivotalProjectId
         );
       }),
       map((pivotalProject) => pivotalProjectLoadSuccess({ pivotalProject })),

@@ -11,11 +11,11 @@ export class SettingsService {
 
   constructor(private pivotalApiService: PivotalApiService) {}
 
-  public loadSettings(): Settings {
+  public loadSettings(): Settings | null {
     const pivotalKanbanSettings = localStorage.getItem(this.localStorageKey);
 
     if (!pivotalKanbanSettings) {
-      return { pivotalApiToken: null, pivotalProjectId: null };
+      return null;
     }
 
     return JSON.parse(pivotalKanbanSettings) as Settings;

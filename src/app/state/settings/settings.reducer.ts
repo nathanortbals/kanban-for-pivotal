@@ -1,14 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
-import { Settings } from '../../models/settings.model';
 import { saveSettings, settingsLoaded } from './settings.actions';
+import { SettingsState } from './settings.state';
 
-export const initialState: Settings = {
-  pivotalApiToken: null,
-  pivotalProjectId: null,
+export const initialState: SettingsState = {
+  settings: null,
+  loadState: 'LOADING',
 };
 
 export const settingsReducer = createReducer(
   initialState,
-  on(settingsLoaded, (state, { settings }) => ({ ...state, ...settings })),
-  on(saveSettings, (state, { settings }) => ({ ...state, ...settings }))
+  on(settingsLoaded, (state, { settings }) => ({
+    settings: settings,
+    loadState: 'SUCCESS',
+  })),
+  on(saveSettings, (state, { settings }) => ({
+    settings: settings,
+    loadState: 'SUCCESS',
+  }))
 );
