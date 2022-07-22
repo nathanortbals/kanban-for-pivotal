@@ -1,0 +1,83 @@
+:host {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes move-twinkling-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-webkit-keyframes move-twinkling-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-moz-keyframes move-twinkling-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@-ms-keyframes move-twinkling-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+.stars,
+.twinkling,
+.vignette {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.stars {
+  z-index: 0;
+  background: url("/assets/stars.png") repeat top center;
+}
+
+.twinkling {
+  z-index: 1;
+  background: transparent url("/assets/twinkling.png") repeat top center;
+  -moz-animation: move-twinkling-back 300s linear infinite;
+  -ms-animation: move-twinkling-back 300s linear infinite;
+  -o-animation: move-twinkling-back 300s linear infinite;
+  -webkit-animation: move-twinkling-back 300s linear infinite;
+  animation: move-twinkling-back 300s linear infinite;
+}
+
+.vignette {
+  z-index: 2;
+}
+
+.start-page-title,
+.start-page-subtitle,
+.start-page-button {
+  z-index: 4;
+}
+
+.start-page-page-title,
+.start-page-page-subtitle {
+  text-align: center;
+}

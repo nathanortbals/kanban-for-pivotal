@@ -23,6 +23,7 @@ import { KanbanBoardColumnComponent } from './components/kanban-board-column/kan
 import { KanbanBoardStoryComponent } from './components/kanban-board-story/kanban-board-story.component';
 import { KanbanBoardComponent } from './components/kanban-board/kanban-board.component';
 import { SettingsDialogComponent } from './components/settings-dialog/settings-dialog.component';
+import { GetStartedPageComponent } from './components/start-page/start-page.component';
 import { StoryDialogComponent } from './components/story-dialog/story-dialog.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SnakeToCamelCaseInterceptor } from './interceptors/snake-to-camel-case.interceptor';
@@ -36,7 +37,6 @@ import { PivotalStoriesEffects } from './state/pivotal-stories/pivotal-stories.e
 import { pivotalStoriesReducer } from './state/pivotal-stories/pivotal-stories.reducer';
 import { SettingsEffects } from './state/settings/settings.effects';
 import { settingsReducer } from './state/settings/settings.reducer';
-import { GetStartedPageComponent } from './components/get-started-page/get-started-page.component';
 
 @NgModule({
   declarations: [

@@ -9,6 +9,7 @@
   kanban-board-column;
 @use "./app/components/kanban-board-story/kanban-board-story.theme.scss" as
   kanban-board-story;
+@use "./app/components/start-page/start-page.theme.scss" as start-page;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -47,6 +48,7 @@ $kanban-for-pivotal-theme: mat.define-dark-theme(
 @include settings-dialog.theme($kanban-for-pivotal-theme);
 @include kanban-board-column.theme($kanban-for-pivotal-theme);
 @include kanban-board-story.theme($kanban-for-pivotal-theme);
+@include start-page.theme($kanban-for-pivotal-theme);
 
 /* You can add global styles to this file, and also import other style files */
 html,
