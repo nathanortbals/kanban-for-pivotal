@@ -11,6 +11,7 @@
     (cdkDropListDropped)="storyDropped($event)"
     [cdkDropListConnectedTo]="connectedPivotalStoryStates"
     [cdkDropListEnterPredicate]="canPivotalStoryEnterState"
+    [@storiesAnimation]="pivotalStories.length"
   >
     <app-kanban-board-story
       cdkDrag

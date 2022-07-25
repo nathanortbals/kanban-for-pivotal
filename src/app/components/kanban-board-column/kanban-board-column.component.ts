@@ -1,3 +1,11 @@
+import {
+  animate,
+  query,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -7,10 +15,24 @@ import { PivotalStory } from 'src/app/models/pivotal-story.model';
 import { updatePivotalStoryState } from 'src/app/state/pivotal-stories/pivotal-stories.actions';
 import { selectPivotalStoriesByState } from 'src/app/state/pivotal-stories/pivotal-stories.selectors';
 
+const storiesAnimation = trigger('storiesAnimation', [
+  transition('* <=> *', [
+    query(
+      ':enter',
+      [
+        style({ opacity: 0 }),
+        stagger('80ms', animate('600ms ease-out', style({ opacity: 1 }))),
+      ],
+      { optional: true }
+    ),
+  ]),
+]);
+
 @Component({
   selector: 'app-kanban-board-column',
   templateUrl: './kanban-board-column.component.html',
   styleUrls: ['./kanban-board-column.component.scss'],
+  animations: [storiesAnimation],
   host: { class: 'kanban-board-column' },
 })
 export class KanbanBoardColumnComponent implements OnInit {
